@@ -1,5 +1,5 @@
 # Group_7
-# Assignment 1 - Assembly Coding for Microcontrollers
+# Assignment 2 - C Coding for Microcontrollers
 
 ## Group Details
 - Henry Kim (SID 470008942)
