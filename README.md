@@ -5,7 +5,7 @@
 - Henry Kim (SID 470008942)
 - William McBean (SID )
 - Rishabh Leelchand (SID )
-- Wei Ming Chen (SID 470274961)
+- Wei Ming Chen (SID )
 
 ## Group Contributions
 Exercise 1: 
