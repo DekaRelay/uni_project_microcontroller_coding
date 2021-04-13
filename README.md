@@ -35,10 +35,6 @@ Exercise 3:
 #### Discussion and Remarks
 
 
-### Exercise 4
-
-#### Discussion and Remarks
-
 
 ## Instructions
 
@@ -50,9 +46,6 @@ Exercise 3:
 
 ### Exercise 3
 
-
-
-### Exercise 4
 
 
 ## Testing
