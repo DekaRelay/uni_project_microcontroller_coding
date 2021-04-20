@@ -26,10 +26,14 @@ void main(void) {
   for(;;){
 
     //check if theres new input 
-    if(ATD0STAT0 & 0x80){
+    if(ATD1STAT0 & 0x80){
   
       //do a 10bit atd conversion so that it can read up to 16 bit words at once
-      input = ATD0DR0L;
+      input = ATD1DR0L;
+      
+      //input = ATD1DR1L
+      
+      //input = ATD1DR2L
     
       //reset the values
       value = 0;
@@ -90,13 +94,16 @@ void set_LEDs(){
 void set_ADC(){
   
   //ADPU and AFFC so staus register 1 doesnt have to re-read
-  ATD0CTL2 = 0xC0;
+  ATD1CTL2 = 0xC0;
+  //ATD1CTL2 = 0x80;
   //1MHz = 16AD cycles
-  ATD0CTL4 = 0xEB;  
+  //ATD1CTL4 = 0xEB;
+  ATD1CTL4 = 0xEB;    
   //1 conversion no FIFO
-  ATD0CTL3 = 0x08;
+  ATD1CTL3 = 0x08;
   //channel 7 through bits 0-2 set as 111
-  ATD0CTL5 = 0xA7;
+  ATD1CTL5 = 0xA7;
+  //ATD1CTL5 = 0x87;
 }
 
 
