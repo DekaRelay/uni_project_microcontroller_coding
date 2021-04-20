@@ -2,7 +2,7 @@
 #include "derivative.h"      /* derivative-specific definitions */
 #include "timers.h"
 #include "measure.h"
-#include "measure_f.h"
+
 
 int overflow = 0;
 
@@ -26,10 +26,10 @@ void main(void) {
 
   // Measure time for arithmatics 
   for (i = 0; i < 6; i++){
-    //tick_int[i] = measure_int(i);
-    //tick_long[i] = measure_long(i);
-    tick_32f[i] = measure_32f(i);
-    tick_64f[i] = measure_64f(i);
+    tick_int[i] = measure_int(i);
+    tick_long[i] = measure_long(i);
+    //tick_32f[i] = measure_32f(i);
+    //tick_64f[i] = measure_64f(i);
  
   }
 

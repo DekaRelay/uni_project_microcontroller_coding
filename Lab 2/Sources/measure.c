@@ -3,7 +3,7 @@
 #include <math.h>
 
 
-/*
+
 // Integer time measurement
 long measure_int (int type){
 
@@ -216,7 +216,7 @@ long measure_long (int type){
 } //*/
 
 
-///*
+/*
 //32 bit float time measurment
 long measure_32f (int type){
 
