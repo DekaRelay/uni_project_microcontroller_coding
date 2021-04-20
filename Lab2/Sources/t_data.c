@@ -10,7 +10,8 @@ int* generate_time (int err){
   static int new_time[24];
   
   unsigned start_time, end_time;  // Start and end time
-  unsigned start_count, end_count; 
+  unsigned start_count, end_count;
+  unsigned empty_time; 
 
   volatile int a, b, c;           // integer calculations
   volatile long la, lb, lc;
@@ -27,6 +28,22 @@ int* generate_time (int err){
   dc = 3.141592;
   
 
+  //------------------ Empty cycle ----------------------
+  start_count = count;
+  start_time = TCNT;
+  
+  // Empty process time count
+  
+  end_time = TCNT; 
+  end_count = count;
+  
+  start_time = start_time + 0xFF*start_count;
+  end_time = end_time + 0xFF*end_count;
+  
+  empty_time = end_time - start_time;
+
+
+  //-------------------------- Integer ---------------------------- 
   // (1) Addition
   start_count = count;
   start_time = TCNT;
@@ -40,7 +57,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[0] = end_time - start_time;
+  new_time[0] = end_time - start_time - empty_time;
   
     
   // (2) Multiply
@@ -56,7 +73,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[1] = end_time - start_time;
+  new_time[1] = end_time - start_time - empty_time;
   
   
   // (3) Division
@@ -72,7 +89,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[2] = end_time - start_time;
+  new_time[2] = end_time - start_time - empty_time;
   
   
   // (4) Square root
@@ -88,7 +105,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[3] = end_time - start_time;
+  new_time[3] = end_time - start_time - empty_time;
   
   
   // (5) Sine
@@ -104,7 +121,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[4] = end_time - start_time;
+  new_time[4] = end_time - start_time - empty_time;
   
    
   // (6) Cosine
@@ -120,7 +137,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[5] = end_time - start_time; 
+  new_time[5] = end_time - start_time - empty_time; 
   
   
   //-------------------------- Long ---------------------------
@@ -137,7 +154,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[6] = end_time - start_time;
+  new_time[6] = end_time - start_time - empty_time;
   
     
   // (2) Multiply
@@ -153,7 +170,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[7] = end_time - start_time;
+  new_time[7] = end_time - start_time - empty_time;
   
   
   // (3) Division
@@ -169,7 +186,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[8] = end_time - start_time;
+  new_time[8] = end_time - start_time - empty_time;
   
   
   // (4) Square root
@@ -185,7 +202,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[9] = end_time - start_time;
+  new_time[9] = end_time - start_time - empty_time;
   
   
   // (5) Sine
@@ -201,7 +218,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[10] = end_time - start_time;
+  new_time[10] = end_time - start_time - empty_time;
   
    
   // (6) Cosine
@@ -217,7 +234,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[11] = end_time - start_time;
+  new_time[11] = end_time - start_time - empty_time;
   
   //-------------------------- Float 32 bit ---------------------------
   // (1) Addition
@@ -233,7 +250,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[12] = end_time - start_time;
+  new_time[12] = end_time - start_time - empty_time;
   
     
   // (2) Multiply
@@ -249,7 +266,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[13] = end_time - start_time;
+  new_time[13] = end_time - start_time - empty_time;
   
   
   // (3) Division
@@ -265,7 +282,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[14] = end_time - start_time;
+  new_time[14] = end_time - start_time - empty_time;
   
   
   // (4) Square root
@@ -281,7 +298,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[15] = end_time - start_time;
+  new_time[15] = end_time - start_time - empty_time;
   
   
   // (5) Sine
@@ -297,7 +314,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[16] = end_time - start_time;
+  new_time[16] = end_time - start_time - empty_time;
   
    
   // (6) Cosine
@@ -313,7 +330,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[17] = end_time - start_time;
+  new_time[17] = end_time - start_time - empty_time;
   
   //-------------------------- Float 64 bit ---------------------------
   // (1) Addition
@@ -329,7 +346,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[18] = end_time - start_time;
+  new_time[18] = end_time - start_time - empty_time;
   
     
   // (2) Multiply
@@ -345,7 +362,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[19] = end_time - start_time;
+  new_time[19] = end_time - start_time - empty_time;
   
   
   // (3) Division
@@ -361,7 +378,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[20] = end_time - start_time;
+  new_time[20] = end_time - start_time - empty_time;
   
   
   // (4) Square root
@@ -377,7 +394,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[21] = end_time - start_time;
+  new_time[21] = end_time - start_time - empty_time;
   
   
   // (5) Sine
@@ -393,7 +410,7 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[22] = end_time - start_time;
+  new_time[22] = end_time - start_time - empty_time;
   
    
   // (6) Cosine
@@ -409,7 +426,10 @@ int* generate_time (int err){
   end_time = end_time + 0xFF*end_count;
   
   
-  new_time[23] = end_time - start_time;
+  new_time[23] = end_time - start_time - empty_time;
+  
+  
+  
   
   
   
