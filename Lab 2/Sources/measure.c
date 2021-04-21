@@ -216,7 +216,7 @@ long measure_long (int type){
 } //*/
 
 
-/*
+
 //32 bit float time measurment
 long measure_32f (int type){
 
@@ -425,5 +425,5 @@ long measure_64f (int type){
   
   return time - empty_time;
 }
-//*/
+
 

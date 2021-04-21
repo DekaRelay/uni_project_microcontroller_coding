@@ -2029,6 +2029,8 @@ rtshc12.c.o (ansibf.lib):
   _CASE_SEARCH_8_BYTE _FCALL _FPCMP 
 VREGS.C.o (ansibf.lib):
   UL_PULK 
+measure.c.o:
+  measure_32f measure_64f 
 NOT USED VARIABLES
 MATH.C.o (ansibf.lib):
   small.1 big.2 

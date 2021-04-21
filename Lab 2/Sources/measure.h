@@ -5,8 +5,8 @@ long measure_int (int type);
 
 long measure_long (int type);
 
-//long measure_32f (int type);
+long measure_32f (int type);
 
-//long measure_64f (int type);
+long measure_64f (int type);
 
 #endif
