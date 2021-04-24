@@ -1,5 +1,5 @@
 *** EVALUATION ***
-PROGRAM "C:\Users\61449\Documents\THIRD-YEAR\MTRX2700\Assignment-1\exercise2\bin\Project.abs"
+PROGRAM "C:\Users\61449\Documents\THIRD-YEAR\MTRX2700\Assignment-2\Group_7\exercise2\bin\Project.abs"
 
 *********************************************************************************************
 TARGET SECTION
@@ -24,7 +24,7 @@ _startupData is allocated at 0xC031 and uses 6 Bytes
 extern struct _tagStartup {
   unsigned nofZeroOut     1
   _Range   pZeroOut       0x1100     1012
-  _Copy    *toCopyDownBeg 0xC0DD
+  _Copy    *toCopyDownBeg 0xC113
 } _startupData;
 
 *********************************************************************************************
@@ -33,8 +33,8 @@ Section Name                    Size  Type     From       To       Segment
 ---------------------------------------------------------------------------------------------
 .init                             49     R     0xC000     0xC030   ROM_C000
 .startData                        10     R     0xC031     0xC03A   ROM_C000
-.text                            162     R     0xC03B     0xC0DC   ROM_C000
-.copy                              9     R     0xC0DD     0xC0E5   ROM_C000
+.text                            216     R     0xC03B     0xC112   ROM_C000
+.copy                              9     R     0xC113     0xC11B   ROM_C000
 .stack                           256   R/W     0x1000     0x10FF   RAM
 .data                              4   R/W     0x1100     0x1103   RAM
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
@@ -385,7 +385,7 @@ Section Name                    Size  Type     From       To       Segment
 .vectSeg343_vect                   2     R     0xFFFE     0xFFFF   .vectSeg343
 
 Summary of section sizes per section type:
-READ_ONLY (R):          EC (dec:      236)
+READ_ONLY (R):         122 (dec:      290)
 READ_WRITE (R/W):      4F4 (dec:     1268)
 NO_INIT (N/I):         190 (dec:      400)
 
@@ -745,11 +745,12 @@ MODULE:                 -- mc9s12dg256.c.o --
      _CAN4TXTSR                                 2BE       2       2       0   .abs_section_2be
 MODULE:                 -- main.c.o --
 - PROCEDURES:
-     main                                      C03B       A      10       1   .text       
-     serial_1_ISR                              C045      24      36       1   .text       
-     serial_0_ISR                              C069      24      36       1   .text       
-     Init_serial                               C08D      1C      28       1   .text       
-     send_serial                               C0A9      34      52       1   .text       
+     main                                      C03B      13      19       1   .text       
+     serial_1_ISR                              C04E      24      36       1   .text       
+     serial_0_ISR                              C072      24      36       1   .text       
+     Init_serial                               C096      23      35       1   .text       
+     struct_init                               C0B9      26      38       1   .text       
+     send_serial                               C0DF      34      52       1   .text       
 - VARIABLES:
      RDRF_BIT                                  1100       2       2       2   .data       
      TDRE_BIT                                  1102       2       2       1   .data       
@@ -774,7 +775,7 @@ MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
   mc9s12dg256.c.o                            400      0      0
-  main.c.o                                  1012    162      4
+  main.c.o                                  1012    216      4
   Start12.c.o                                  0     49      0
   other                                      256     12      9
 
@@ -782,7 +783,7 @@ MODULE STATISTIC
 SECTION USE IN OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 SECTION: ".text"
-  main serial_1_ISR serial_0_ISR Init_serial send_serial 
+  main serial_1_ISR serial_0_ISR Init_serial struct_init send_serial 
 SECTION: ".data"
   RDRF_BIT TDRE_BIT 
 SECTION: ".bss"
@@ -1832,11 +1833,12 @@ OBJECT LIST SORTED BY ADDRESS
      inputs                                    110C     3E8    1000       4   .common     
      Init                                      C000      29      41       1   .init       
      _Startup                                  C029       8       8       0   .init       
-     main                                      C03B       A      10       1   .text       
-     serial_1_ISR                              C045      24      36       1   .text       
-     serial_0_ISR                              C069      24      36       1   .text       
-     Init_serial                               C08D      1C      28       1   .text       
-     send_serial                               C0A9      34      52       1   .text       
+     main                                      C03B      13      19       1   .text       
+     serial_1_ISR                              C04E      24      36       1   .text       
+     serial_0_ISR                              C072      24      36       1   .text       
+     Init_serial                               C096      23      35       1   .text       
+     struct_init                               C0B9      26      38       1   .text       
+     send_serial                               C0DF      34      52       1   .text       
      _Vector_21                                FFD4       2       2       0   .abs_section_ffd4
      _Vector_20                                FFD6       2       2       0   .abs_section_ffd6
 
@@ -1847,19 +1849,19 @@ UNUSED-OBJECTS SECTION
 *********************************************************************************************
 COPYDOWN SECTION
 ---------------------------------------------------------------------------------------------
-------- ROM-ADDRESS: 0xC0DD ---- SIZE       4 ---
+------- ROM-ADDRESS: 0xC113 ---- SIZE       4 ---
 Filling bytes inserted
  00031101
-------- ROM-ADDRESS: 0xC0E1 ---- RAM-ADDRESS: 0x1101 ---- SIZE       1 ---
+------- ROM-ADDRESS: 0xC117 ---- RAM-ADDRESS: 0x1101 ---- SIZE       1 ---
 Name of initialized Object : RDRF_BIT:1
  20
-------- ROM-ADDRESS: 0xC0E2 ---- SIZE       1 ---
+------- ROM-ADDRESS: 0xC118 ---- SIZE       1 ---
 Filling bytes inserted
  00
-------- ROM-ADDRESS: 0xC0E3 ---- RAM-ADDRESS: 0x1103 ---- SIZE       1 ---
+------- ROM-ADDRESS: 0xC119 ---- RAM-ADDRESS: 0x1103 ---- SIZE       1 ---
 Name of initialized Object : TDRE_BIT:1
  80
-------- ROM-ADDRESS: 0xC0E4 ---- SIZE       2 ---
+------- ROM-ADDRESS: 0xC11A ---- SIZE       2 ---
 Filling bytes inserted
  0000
 
@@ -1868,7 +1870,7 @@ OBJECT-DEPENDENCIES SECTION
 ---------------------------------------------------------------------------------------------
 Init                      USES _startupData 
 _Startup                  USES __SEG_END_SSTACK Init main 
-main                      USES Init_serial send_serial 
+main                      USES struct_init Init_serial send_serial 
 serial_1_ISR              USES _SCI1SR1 RDRF_BIT input_index _SCI1DRL inputs 
                                 received_1 
 serial_0_ISR              USES _SCI0SR1 RDRF_BIT input_index _SCI0DRL inputs 
@@ -1887,6 +1889,8 @@ DEPENDENCY TREE
  | 
  +- main                
  |  | 
+ |  +- struct_init         
+ |  |    
  |  +- Init_serial         
  |  |    
  |  +- send_serial         
@@ -1911,6 +1915,6 @@ STATISTIC SECTION
 
 ExeFile:
 --------
-Number of blocks to be downloaded: 7
-Total size of all blocks to be downloaded: 236
+Number of blocks to be downloaded: 6
+Total size of all blocks to be downloaded: 290
 

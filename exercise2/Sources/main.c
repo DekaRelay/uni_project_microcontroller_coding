@@ -1,26 +1,47 @@
 // Macro
-#include <hidef.h>      /* common defines and macros */
-#include "derivative.h"      /* derivative-specific definitions */
+#include <hidef.h>           // common defines and macros 
+#include "derivative.h"      // derivative-specific definitions
 #define INPUT_OVERFLOW 1000  // allocated memory for serial input
 
 
+// Struct for serial setup
+struct serial_parameters {
+ 
+ // Parameters for bits that control serial port configuration 
+ int baud_rate_L;
+ int baud_rate_H;
+ int CR1;
+ int CR2; 
+ 
+ // Could do other global variables  
+  
+};
+
+
 // Global variables
-unsigned char inputs[INPUT_OVERFLOW];
-unsigned int RDRF_BIT = 0x20;   
-unsigned int TDRE_BIT = 0x80;
+unsigned char inputs[INPUT_OVERFLOW];    // variables for buffer
 unsigned int input_index = 0;
-unsigned int num_sent = 0;
+
+unsigned int RDRF_BIT = 0x20;            // bit masks for Serial recieve and transmit
+unsigned int TDRE_BIT = 0x80;
+
+unsigned int num_sent = 0;               // variables to transmit characters to appropriate terminal
 unsigned int received_0 = 0;
 unsigned int received_1 = 0;
 
 
 // Declaration of functions to be used in program
-void Init_serial(void);
-void send_serial(void);  
+void Init_serial(struct serial_parameters *set_serial);
+void send_serial(void);
+struct serial_parameters struct_init(void);  
   
+  
+// Main function
 void main(void) {
   
-  Init_serial();       // Enter function to initialise serial interupt
+  struct serial_parameters set_serial = struct_init();
+  
+  Init_serial(&set_serial);       // Enter function to initialise serial interupt
 	EnableInterrupts;     
 
   for(;;) {
@@ -71,32 +92,45 @@ __interrupt 20 void serial_0_ISR(void) {
 
 
 // Function to configure set up of serial I/O
-void Init_serial(void){
+void Init_serial(struct serial_parameters *set_serial){
   
  // Enabling serial port 0
- SCI0BDL = 0x9C;        // Set the baud rate to 9600
- SCI0BDH = 0x00;         
- SCI0CR1 = 0x4C;        // select 8 data bits, address mark wake-up 
- SCI0CR2 = 0x2C;        // Enable transmitter and reciever, enable receiver interrupt
+ SCI0BDL = set_serial->baud_rate_L;        
+ SCI0BDH = set_serial->baud_rate_H;         
+ SCI0CR1 = set_serial->CR1;                 
+ SCI0CR2 = set_serial->CR2;        
   
  // Enabling serial port 1
- SCI1BDL = 0x9C;        // Set the baud rate to 9600
- SCI1BDH = 0x00;         
- SCI1CR1 = 0x4C;        // select 8 data bits, address mark wake-up 
- SCI1CR2 = 0x2C;        // Enable transmitter and reciever, enable receiver interrupt
+ SCI1BDL = set_serial->baud_rate_L;        
+ SCI1BDH = set_serial->baud_rate_H;         
+ SCI1CR1 = set_serial->CR1;        
+ SCI1CR2 = set_serial->CR2;        
 
+}
+
+
+// Function to set up set_serial struct
+struct serial_parameters struct_init(void) {
+ 
+ struct serial_parameters set_serial;
+  
+ set_serial.baud_rate_L = 0x9C;     // Set the baud rate to 9600
+ set_serial.baud_rate_H = 0x00;
+ set_serial.CR1 = 0x4C;             // select 8 data bits, address mark wake-up 
+ set_serial.CR2 = 0x2C;             // Enable transmitter and reciever, enable receiver interrupt
+                                    
+ return set_serial; 
+  
 }
 
 
 // Function to sent each character back to the port it came from 
 void send_serial(void) {
- 
-  // some logic to determine where the serial is going
   
-  // Check if all inputed characters have been sent and wait for the TDRE to be clear
-  if ((num_sent != input_index) && (SCI1SR1 & TDRE_BIT)){  
+  if ((num_sent != input_index) && (SCI1SR1 & TDRE_BIT)){    // Check if all inputed characters have been sent and wait for the TDRE to be clear
   
     // send character to the appropriate terminal
+    
     if (received_0) {
       SCI0DRL = inputs[num_sent++];    // write the character from the inputs array to SCI0
     } 
@@ -105,6 +139,7 @@ void send_serial(void) {
     }
     
     // set recieved variables to zero so they can be used again
+    
     received_1 = 0;
     received_0 = 0;
       
