@@ -2,8 +2,12 @@
 #include "derivative.h"      /* derivative-specific definitions */
 #include "timers.h"
 #include "measure.h"
+#include "serial.h"
+#define BUFFER_SIZE 100
 
 int overflow = 0;
+char buffer[BUFFER_SIZE];
+int buffer_index;
 
 void main(void) {
   /* put your own code here */
@@ -12,7 +16,7 @@ void main(void) {
     // Time measurement arrays
     float time[3][6];
 
-    int i;
+    int i, j;
     float prescaler = 41.6*0.001;  // microseconds
  
  
@@ -29,6 +33,18 @@ void main(void) {
     time[2][i] = measure_32f(i) * prescaler;   
   }
 
+
+  // Enter function to initialise serial
+  Init_serial();
+  
+  // Send measured floats to serial
+  for(j = 0; j < 6; j++){
+    for(i = 0; i < 3; i++){
+      float_to_str(time[j][i]); // Convert time into a string and store to buffer
+    
+      send_serial();
+    }
+  }
 
 
   for(;;) {
