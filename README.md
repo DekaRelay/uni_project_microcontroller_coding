@@ -44,6 +44,7 @@ Exercise 1 was divided into 3 major modules including timer, measurment and disp
 
 ### Exercise 1
 
+For exercise 1, the process is done all automatically from intiating / disabling the timer and measuring each arithmetic calculations. Each calculation is built to be sent through the serial ports and displayed as the preset layouts. The process will be initiated as the code runs, but as the measurment is done through external clock in the HCS12 board, stepping through the code will affect the outcome values.
 
 ### Exercise 2
 
@@ -57,6 +58,7 @@ Exercise 1 was divided into 3 major modules including timer, measurment and disp
 
 ### Exercise 1
 
+Various different numbers are used for each data type. For integer and long, negative and positive values with long or short digits were both tested. Furthermore, for 32 bit float, values with over 7 decimal points were also tested and showed that the code simply neglects any digits exceeding the limits, eventually not having any effects on the measured values.
 
 ### Exercise 2
 
