@@ -8,7 +8,7 @@
 int i;
 int j;
 int k;
-char ascii_array[7][85];
+char ascii_array[9][85];
 int char_count;
 int line_count;
 extern char buffer[BUFFER_SIZE];
@@ -20,7 +20,7 @@ char** ascii_table(float **time){
     
     //add the border lines
     line_count = 0;
-    for(i = 0 ; i<7 ; i=i+2){
+    for(i = 0 ; i<9 ; i=i+2){
       line_count = 0;
       for(j = 0 ; j<7 ; j++){
         
@@ -40,7 +40,7 @@ char** ascii_table(float **time){
     }
     
     k = 1;
-    for(i = 0 ; i <3 ; i++){        //loop through float time array
+    for(i = 0 ; i <4 ; i++){        //loop through float time array
       
       ascii_array[k][0] = '|';    //add the first borderline
       line_count = 1;
