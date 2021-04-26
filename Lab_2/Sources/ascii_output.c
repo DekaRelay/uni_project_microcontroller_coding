@@ -36,6 +36,8 @@ void ascii_table(float time[4][6]){
       }
       ascii_array[i][line_count] = '+';
       line_count++;
+      ascii_array[i][line_count] = '\n';
+      line_count++;
       ascii_array[i][line_count] = '\0';
       
     }
@@ -43,6 +45,7 @@ void ascii_table(float time[4][6]){
     for(i = 0 ; i<78 ; i++){
       ascii_array[1][i] = top_label[i];    
     }
+    ascii_array[1][78] = '\n';
     
     k = 3;
     for(i = 0 ; i <4 ; i++){        //loop through float time array
@@ -105,8 +108,8 @@ void ascii_table(float time[4][6]){
         ascii_array[k][line_count] = '|'; //add | to line
         line_count++;
       }
-      //ascii_array[k][line_count] = 13;
-      //line_count++;
+      ascii_array[k][line_count] = '\n';
+      line_count++;
       ascii_array[k][line_count] = '\0';  //add null char to end of string
       k = k +2;
     }
