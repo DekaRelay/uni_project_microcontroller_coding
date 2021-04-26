@@ -43,18 +43,25 @@ void Init_serial(void) {
 }
 
 
-void send_serial(void) {
+void send_serial(char *string) {
  
   int i;
   
-  for (i = buffer_index-1; i >= 0; i--){
+  for (i = 0; i <= 80; i++){
     
-    if (SCI1SR1 & TDRE_BIT) {
+    //if (SCI1SR1 & TDRE_BIT) {
+    while(!(SCI1SR1 & TDRE_BIT));  
+    SCI1DRL = string[i];
       
-        SCI1DRL = buffer[i];
-      
-    } 
+    //} 
    
   }
      
+}
+
+void send_char_serial(char character){
+  
+  while(!(SCI1SR1 & TDRE_BIT));
+  SCI1DRL = character; 
+  
 }

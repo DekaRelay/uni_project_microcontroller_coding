@@ -29,6 +29,7 @@ isr_vectors.c.o                         Model: BANKED,        Lang: ANSI-C
 measure.c.o                             Model: BANKED,        Lang: ANSI-C
 timers.c.o                              Model: BANKED,        Lang: ANSI-C
 serial.c.o                              Model: BANKED,        Lang: ANSI-C
+ascii_output.c.o                        Model: BANKED,        Lang: ANSI-C
 
 *********************************************************************************************
 STARTUP SECTION
@@ -37,7 +38,7 @@ Entry point: 0xC000 (_Startup)
 _startupData is allocated at 0xC00B and uses 6 Bytes
 extern struct _tagStartup {
   unsigned nofZeroOut     1
-  _Range   pZeroOut       0x1100     112
+  _Range   pZeroOut       0x1100     966
   _Copy    *toCopyDownBeg 0xC5B1
 } _startupData;
 
@@ -49,10 +50,10 @@ Section Name                    Size  Type     From       To       Segment
 .startData                        10     R     0xC00B     0xC014   ROM_C000
 .rodata                            8     R     0xC015     0xC01C   ROM_C000
 NON_BANKED                      1428     R     0xC01D     0xC5B0   ROM_C000
-.copy                              7     R     0xC5B1     0xC5B7   ROM_C000
-.text                           2321     R   0x308000   0x308910   PAGE_30
+.copy                             85     R     0xC5B1     0xC605   ROM_C000
+.text                           2817     R   0x308000   0x308B00   PAGE_30
 .stack                           256   R/W     0x1000     0x10FF   RAM
-.data                              2   R/W     0x1100     0x1101   RAM
+.data                             81   R/W     0x1100     0x1150   RAM
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
 .abs_section_9                     1   N/I        0x9        0x9   .absSeg1
 .abs_section_a                     1   N/I        0xA        0xA   .absSeg2
@@ -395,13 +396,13 @@ NON_BANKED                      1428     R     0xC01D     0xC5B0   ROM_C000
 .abs_section_2ae                   2   N/I      0x2AE      0x2AF   .absSeg339
 .abs_section_2be                   2   N/I      0x2BE      0x2BF   .absSeg340
 .abs_section_ff80                126     R     0xFF80     0xFFFD   .absSeg341
-.bss                               2   R/W     0x1102     0x1103   RAM
-.common                          108   R/W     0x1104     0x116F   RAM
+.bss                               2   R/W     0x1151     0x1152   RAM
+.common                          883   R/W     0x1153     0x14C5   RAM
 .vectSeg342_vect                   2     R     0xFFFE     0xFFFF   .vectSeg342
 
 Summary of section sizes per section type:
-READ_ONLY (R):         F49 (dec:     3913)
-READ_WRITE (R/W):      170 (dec:      368)
+READ_ONLY (R):        1187 (dec:     4487)
+READ_WRITE (R/W):      4C6 (dec:     1222)
 NO_INIT (N/I):         190 (dec:      400)
 
 *********************************************************************************************
@@ -500,10 +501,10 @@ MODULE:                 -- mc9s12dg256.c.o --
      _SCI0DRL                                    CF       1       1       0   .abs_section_cf
      _SCI1CR1                                    D2       1       1       1   .abs_section_d2
      _SCI1CR2                                    D3       1       1       1   .abs_section_d3
-     _SCI1SR1                                    D4       1       1       1   .abs_section_d4
+     _SCI1SR1                                    D4       1       1       2   .abs_section_d4
      _SCI1SR2                                    D5       1       1       0   .abs_section_d5
      _SCI1DRH                                    D6       1       1       0   .abs_section_d6
-     _SCI1DRL                                    D7       1       1       1   .abs_section_d7
+     _SCI1DRL                                    D7       1       1       2   .abs_section_d7
      _SPI0CR1                                    D8       1       1       0   .abs_section_d8
      _SPI0CR2                                    D9       1       1       0   .abs_section_d9
      _SPI0BR                                     DA       1       1       0   .abs_section_da
@@ -760,14 +761,15 @@ MODULE:                 -- mc9s12dg256.c.o --
      _CAN4TXTSR                                 2BE       2       2       0   .abs_section_2be
 MODULE:                 -- main.c.o --
 - PROCEDURES:
-     main                                    308000      BD     189       2   .text       
+     main                                    308000      AE     174       2   .text       
 - VARIABLES:
-     overflow                                  1102       2       2       9   .bss        
-     buffer                                    1104      64     100       5   .common     
-     buffer_index                              1168       2       2       4   .common     
+     overflow                                  1151       2       2       9   .bss        
+     buffer                                    1153      64     100       5   .common     
+     buffer_index                              11B7       2       2       4   .common     
+     ascii_array                               11B9     2FD     765      15   .common     
 MODULE:                 -- Start12.c.o --
 - PROCEDURES:
-     Init                                    3080BD      29      41       2   .text       
+     Init                                    3080AE      29      41       2   .text       
      _Startup                                  C000       B      11       0   .init       
 - VARIABLES:
      _startupData                              C00B       6       6       3   .startData  
@@ -775,13 +777,13 @@ MODULE:                 -- Start12.c.o --
      __SEG_END_SSTACK                          1100       0       0       1               
 MODULE:                 -- MATH.C.o (ansib.lib) --
 - PROCEDURES:
-     fabs                                    3080E6      10      16       4   .text       
-     is_special                              3080F6      3C      60       6   .text       
-     sincos                                  308132     1F0     496       9   .text       
-     sin                                     308322      62      98       6   .text       
-     cos                                     308384      48      72       6   .text       
-     sqrt_r                                  3083CC      C8     200       3   .text       
-     sqrt                                    308494      42      66       6   .text       
+     fabs                                    3080D7      10      16       4   .text       
+     is_special                              3080E7      3C      60       6   .text       
+     sincos                                  308123     1F0     496       9   .text       
+     sin                                     308313      62      98       6   .text       
+     cos                                     308375      48      72       6   .text       
+     sqrt_r                                  3083BD      C8     200       3   .text       
+     sqrt                                    308485      42      66       6   .text       
 - VARIABLES:
      infinity                                  C015       4       4       4   .rodata     
      nan_union                                 C019       4       4       2   .rodata     
@@ -851,7 +853,7 @@ MODULE:                 -- rtshc12.c.o (ansib.lib) --
      _ILSEXT                                   C56F       7       7       8   NON_BANKED  
      _CASE_CHECKED_BYTE                        C576      14      20       6   NON_BANKED  
 - VARIABLES:
-     errno                                     116A       2       2       2   .common     
+     errno                                     14B6       2       2       2   .common     
 MODULE:                 -- VREGS.C.o (ansib.lib) --
 - PROCEDURES:
      L_NEGK                                    C58A       7       7       2   NON_BANKED  
@@ -865,31 +867,42 @@ MODULE:                 -- isr_vectors.c.o --
      _vect                                     FF80      7E     126       0   .abs_section_ff80
 MODULE:                 -- measure.c.o --
 - PROCEDURES:
-     measure_int                             3084D6      FD     253      10   .text       
-     measure_long                            3085D3     14C     332      14   .text       
-     measure_32f                             30871F     131     305      17   .text       
+     measure_int                             3084C7      FD     253      10   .text       
+     measure_long                            3085C4     14C     332      14   .text       
+     measure_32f                             308710     131     305      17   .text       
 - VARIABLES:
 MODULE:                 -- timers.c.o --
 - PROCEDURES:
-     Init_Timer                              308850       9       9       2   .text       
+     Init_Timer                              308841       9       9       2   .text       
      TOF_ISR                                   C5A5       C      12       1   NON_BANKED  
 - VARIABLES:
 MODULE:                 -- serial.c.o --
 - PROCEDURES:
-     float_to_str                            308859      8B     139       2   .text       
-     Init_serial                             3088E4       F      15       2   .text       
-     send_serial                             3088F3      1E      30       2   .text       
+     float_to_str                            30884A      8B     139       2   .text       
+     Init_serial                             3088D5       F      15       2   .text       
+     send_serial                             3088E4      24      36       2   .text       
+     send_char_serial                        308908       C      12       2   .text       
 - VARIABLES:
-     TDRE_BIT                                  1100       2       2       1   .data       
-     dec                                       116C       2       2       2   .common     
-     dVal                                      116E       2       2       5   .common     
+     TDRE_BIT                                  1100       2       2       2   .data       
+     dec                                       14B8       2       2       2   .common     
+     dVal                                      14BA       2       2       5   .common     
+MODULE:                 -- ascii_output.c.o --
+- PROCEDURES:
+     ascii_table                             308914     1ED     493      18   .text       
+- VARIABLES:
+     top_label                                 1102      4F      79       1   .data       
+     i                                         14BC       2       2      10   .common     
+     j                                         14BE       2       2       9   .common     
+     k                                         14C0       2       2       8   .common     
+     char_count                                14C2       2       2       5   .common     
+     line_count                                14C4       2       2      13   .common     
 
 *********************************************************************************************
 MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
   mc9s12dg256.c.o                            400      0      0
-  main.c.o                                   104    189      0
+  main.c.o                                   869    174      0
   Start12.c.o                                  0     52      0
   MATH.C.o (ansib.lib)                         0   1008      8
   DANSI.C.o (ansib.lib)                        0      9      0
@@ -904,8 +917,9 @@ MODULE STATISTIC
   isr_vectors.c.o                              0      2    126
   measure.c.o                                  0    890      0
   timers.c.o                                   0     21      0
-  serial.c.o                                   6    184      0
-  other                                      256     12      7
+  serial.c.o                                   6    202      0
+  ascii_output.c.o                            89    493      0
+  other                                      256     12     85
 
 *********************************************************************************************
 SECTION USE IN OBJECT-ALLOCATION SECTION
@@ -913,8 +927,9 @@ SECTION USE IN OBJECT-ALLOCATION SECTION
 SECTION: ".text"
   main Init fabs is_special sincos sin cos sqrt_r sqrt measure_int 
   measure_long measure_32f Init_Timer float_to_str Init_serial send_serial 
+  send_char_serial ascii_table 
 SECTION: ".data"
-  TDRE_BIT 
+  TDRE_BIT top_label 
 SECTION: ".bss"
   overflow 
 SECTION: ".init"
@@ -1610,7 +1625,7 @@ SECTION: ".abs_section_2ae"
 SECTION: ".abs_section_2be"
   _CAN4TXTSR 
 SECTION: ".common"
-  buffer buffer_index errno dec dVal 
+  buffer buffer_index ascii_array errno dec dVal i j k char_count line_count 
 SECTION: ".abs_section_ff80"
   _vect 
 
@@ -1746,10 +1761,10 @@ OBJECT LIST SORTED BY ADDRESS
      _SCI1BD                                     D0       2       2       2   .abs_section_d0
      _SCI1CR1                                    D2       1       1       1   .abs_section_d2
      _SCI1CR2                                    D3       1       1       1   .abs_section_d3
-     _SCI1SR1                                    D4       1       1       1   .abs_section_d4
+     _SCI1SR1                                    D4       1       1       2   .abs_section_d4
      _SCI1SR2                                    D5       1       1       0   .abs_section_d5
      _SCI1DRH                                    D6       1       1       0   .abs_section_d6
-     _SCI1DRL                                    D7       1       1       1   .abs_section_d7
+     _SCI1DRL                                    D7       1       1       2   .abs_section_d7
      _SPI0CR1                                    D8       1       1       0   .abs_section_d8
      _SPI0CR2                                    D9       1       1       0   .abs_section_d9
      _SPI0BR                                     DA       1       1       0   .abs_section_da
@@ -1959,13 +1974,20 @@ OBJECT LIST SORTED BY ADDRESS
      _CAN4TXDLR                                 2BC       1       1       0   .abs_section_2bc
      _CAN4TXTBPR                                2BD       1       1       0   .abs_section_2bd
      _CAN4TXTSR                                 2BE       2       2       0   .abs_section_2be
-     TDRE_BIT                                  1100       2       2       1   .data       
-     overflow                                  1102       2       2       9   .bss        
-     buffer                                    1104      64     100       5   .common     
-     buffer_index                              1168       2       2       4   .common     
-     errno                                     116A       2       2       2   .common     
-     dec                                       116C       2       2       2   .common     
-     dVal                                      116E       2       2       5   .common     
+     TDRE_BIT                                  1100       2       2       2   .data       
+     top_label                                 1102      4F      79       1   .data       
+     overflow                                  1151       2       2       9   .bss        
+     buffer                                    1153      64     100       5   .common     
+     buffer_index                              11B7       2       2       4   .common     
+     ascii_array                               11B9     2FD     765      15   .common     
+     errno                                     14B6       2       2       2   .common     
+     dec                                       14B8       2       2       2   .common     
+     dVal                                      14BA       2       2       5   .common     
+     i                                         14BC       2       2      10   .common     
+     j                                         14BE       2       2       9   .common     
+     k                                         14C0       2       2       8   .common     
+     char_count                                14C2       2       2       5   .common     
+     line_count                                14C4       2       2      13   .common     
      _Startup                                  C000       B      11       0   .init       
      infinity                                  C015       4       4       4   .rodata     
      nan_union                                 C019       4       4       2   .rodata     
@@ -2017,22 +2039,24 @@ OBJECT LIST SORTED BY ADDRESS
      UnimplementedISR                          C5A3       2       2      62   NON_BANKED  
      TOF_ISR                                   C5A5       C      12       1   NON_BANKED  
      _vect                                     FF80      7E     126       0   .abs_section_ff80
-     main                                    308000      BD     189       2   .text       
-     Init                                    3080BD      29      41       2   .text       
-     fabs                                    3080E6      10      16       4   .text       
-     is_special                              3080F6      3C      60       6   .text       
-     sincos                                  308132     1F0     496       9   .text       
-     sin                                     308322      62      98       6   .text       
-     cos                                     308384      48      72       6   .text       
-     sqrt_r                                  3083CC      C8     200       3   .text       
-     sqrt                                    308494      42      66       6   .text       
-     measure_int                             3084D6      FD     253      10   .text       
-     measure_long                            3085D3     14C     332      14   .text       
-     measure_32f                             30871F     131     305      17   .text       
-     Init_Timer                              308850       9       9       2   .text       
-     float_to_str                            308859      8B     139       2   .text       
-     Init_serial                             3088E4       F      15       2   .text       
-     send_serial                             3088F3      1E      30       2   .text       
+     main                                    308000      AE     174       2   .text       
+     Init                                    3080AE      29      41       2   .text       
+     fabs                                    3080D7      10      16       4   .text       
+     is_special                              3080E7      3C      60       6   .text       
+     sincos                                  308123     1F0     496       9   .text       
+     sin                                     308313      62      98       6   .text       
+     cos                                     308375      48      72       6   .text       
+     sqrt_r                                  3083BD      C8     200       3   .text       
+     sqrt                                    308485      42      66       6   .text       
+     measure_int                             3084C7      FD     253      10   .text       
+     measure_long                            3085C4     14C     332      14   .text       
+     measure_32f                             308710     131     305      17   .text       
+     Init_Timer                              308841       9       9       2   .text       
+     float_to_str                            30884A      8B     139       2   .text       
+     Init_serial                             3088D5       F      15       2   .text       
+     send_serial                             3088E4      24      36       2   .text       
+     send_char_serial                        308908       C      12       2   .text       
+     ascii_table                             308914     1ED     493      18   .text       
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
@@ -2066,11 +2090,19 @@ COPYDOWN SECTION
 ---------------------------------------------------------------------------------------------
 ------- ROM-ADDRESS: 0xC5B1 ---- SIZE       4 ---
 Filling bytes inserted
- 00011101
+ 004F1101
 ------- ROM-ADDRESS: 0xC5B5 ---- RAM-ADDRESS: 0x1101 ---- SIZE       1 ---
 Name of initialized Object : TDRE_BIT:1
  80
-------- ROM-ADDRESS: 0xC5B6 ---- SIZE       2 ---
+------- ROM-ADDRESS: 0xC5B6 ---- RAM-ADDRESS: 0x1102 ---- SIZE      78 ---
+Name of initialized Object : top_label
+ 7C20202020 2020202020 207C416464
+ 2020202020 20207C4D75 6C7469706C
+ 7920207C44 6976697369 6F6E20207C
+ 5371756172 65526F6F74 7C53696E65
+ 2020202020 207C436F73 696E652020
+ 20207C
+------- ROM-ADDRESS: 0xC604 ---- SIZE       2 ---
 Filling bytes inserted
  0000
 
@@ -2107,8 +2139,8 @@ SL_PULK                   USES L_NEGK
 TOF_ISR                   USES overflow _TFLG2 
 _vect                     USES UnimplementedISR TOF_ISR 
 main                      USES Init_Timer measure_int _FSFLOAT _FMUL 
-                                measure_long measure_32f Init_serial float_to_str 
-                                send_serial 
+                                measure_long measure_32f Init_serial ascii_table 
+                                ascii_array send_serial send_char_serial 
 Init                      USES _startupData 
 is_special                USES _LCMP 
 sincos                    USES _FADD _FMUL modf _FCMP sincos _FUTRUNC _FSUB 
@@ -2129,7 +2161,10 @@ Init_Timer                USES _TSCR1 _TSCR2 _TFLG2
 float_to_str              USES _FADD _FSTRUNC dVal _FMUL dec buffer 
                                 buffer_index 
 Init_serial               USES _SCI1BD _SCI1CR1 _SCI1CR2 
-send_serial               USES buffer_index _SCI1SR1 TDRE_BIT buffer _SCI1DRL 
+send_serial               USES _SCI1SR1 TDRE_BIT _SCI1DRL 
+send_char_serial          USES _SCI1SR1 TDRE_BIT _SCI1DRL 
+ascii_table               USES i line_count j ascii_table k top_label 
+                                ascii_array float_to_str char_count buffer buffer_index 
 
 *********************************************************************************************
 DEPENDENCY TREE
@@ -2364,15 +2399,19 @@ DEPENDENCY TREE
  |  |     
  |  +- Init_serial         
  |  |    
- |  +- float_to_str        
+ |  +- ascii_table         
  |  |  | 
- |  |  +- _FADD                (see above)
- |  |  |  
- |  |  +- _FSTRUNC             (see above)
- |  |  |  
- |  |  +- _FMUL                (see above)
- |  |     
+ |  |  +- float_to_str        
+ |  |     | 
+ |  |     +- _FADD                (see above)
+ |  |     |  
+ |  |     +- _FSTRUNC             (see above)
+ |  |     |  
+ |  |     +- _FMUL                (see above)
+ |  |        
  |  +- send_serial         
+ |  |    
+ |  +- send_char_serial    
  |       
  +- _Startup            
     | 
@@ -2393,5 +2432,5 @@ STATISTIC SECTION
 ExeFile:
 --------
 Number of blocks to be downloaded: 6
-Total size of all blocks to be downloaded: 3913
+Total size of all blocks to be downloaded: 4487
 

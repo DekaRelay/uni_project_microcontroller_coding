@@ -13,6 +13,7 @@ long measure_double (int type);   /* Unknown error where the code doesn't recogn
 int overflow = 0;
 char buffer[BUFFER_SIZE];
 int buffer_index;
+char ascii_array[11][85];
 
 void main(void) {
   /* put your own code here */
@@ -47,7 +48,12 @@ void main(void) {
   
   // Convert to table format
   ascii_table(time);   // Convert float into table layout
+  for(i = 0 ; i<11 ; i++){
+    
+    send_serial(ascii_array[i]);
+    send_char_serial(13);	
   
+  }
   // Send to serial 
 
 
