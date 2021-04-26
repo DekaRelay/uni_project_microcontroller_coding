@@ -24,11 +24,11 @@ Each group member is responsible for the collaboration and completion of the pro
 ## High Level Overview
 
 The code in this project is divided into 3 main modules:
-* **Module 1:** <br> Benchmarking the performance of arithmetic functions
+* **Module 1: Benchmarking the performance of arithmetic functions** <br>
 Module 1 calculates the time taken for different math operations within the microcontroller and outputs this data to the serial port in tabular form
-* **Module 1:** Serial with interrupts
+* **Module 2: Serial with interrupts** <br>
 Module 2 recieves input from both serial port 0 and 1 via interrupts and outputs this data back towards the same serial port.
-- Module 3: Reading data from accelerometer
+* **Module 3: Reading data from accelerometer** <br>
 Module 3 reads analog input from an external accelerometer and transforms it into a live feed of the acceleration values. Moreover, this module takes these values and trasmits a live feed to the serial port displaying the current acceleration along the axes and the axis pointing in the downward direction.
 
 Each of these three main modules were broken into sets of functions to perform the task specifically.
