@@ -78,27 +78,65 @@ The downward direction of the accelerometer was then calculated as the closest a
 
 ## Instructions
 
-### Exercise 1
+* **Selecting the Exercise to Run** <br>
+1. Connect the Dragon board to both the Codewarrior debugger and the PC running putty
 
-For exercise 1, the process is done all automatically from intiating / disabling the timer and measuring each arithmetic calculations. Each calculation is built to be sent through the serial ports and displayed as the preset layouts. The process will be initiated as the code runs, but as the measurment is done through external clock in the HCS12 board, stepping through the code will affect the outcome values.
+2. Set up the putty.
+   * Open putty then open the serial connection setting.
+   * Change flow control to none.
+   * Set the baud rate to 9600 and data to 8 bit.
+   * Go to session tab and go to serial.
+   * Connect to the COM specified in your device manager and click open.
 
-### Exercise 2
+3. Open the folder "Lab_2_Demo" and run Lab_2fin.mcp.
+
+4. Select the relevant program you want to run by modifying the ex_num variable. The value you input will determine which exercise is run, with the value corresponding to the exercise number
+   * setting ex_num = 1 will run exercise 1.
+
+* **Running exercise 1** <br>
+1.  Click debug to start the program.
+
+2.  Click run to run the code thoroughly instead of stepping. Note: Stepping will result in accuracy loss.
+
+3.  The data will be displayed onto the putty terminal in tabular format.
+
+* **Running exercise 2** <br>
+1.  Change the program into simulation
+
+2.  Click debug to start the program. Click run to run the code.
+
+3.  Type into the simulated terminal in both SCI0 and SCI1.
+
+4.  The characters typed into the terminal will appear on the terminal in real time.
+
+* **Running exercise 3** <br>
+1.  Click debug to start the program. Click run to run through the code.
+
+2.  Move the accelerometer
+
+3.  The values for acceleration and downwards direction will appear on the putty terminal in real time
+
+## Details about testing procedures
+
+* **Module 1: Benchmarking the performance of arithmetic functions** <br>
+
+   input range:
+   constraints/limitations: - maybe talk about inputs to the table
+   outputs:
+   testing procedure:
 
 
-### Exercise 3
+Tested out various different type of values for all integer, long, 32 bit float and 64 bit float.
+
+Integer: Different length of numbers used (ie. b = 10, c = 5 / b = 255, c = 125 / b = 500, c = 17)
+Long: Relatively longer digits were used (ie. b = 1000000, c = 800000 / b = 1234567, c = 876543)
+32-bit float: Both short and long digits with decimal places were tested. Discovered that decimal places over 7 digits simply gets removed, having no impact on the measured time.
+64-bit float: Relatively longer digits with decimal places were tested.
+Note: Every first measurement time showed unexpected larger value, therefore the initial measurement is duplicated and the second value is used!
+
+* **Module 2: Serial with interrupts** <br>
 
 
-
-## Testing
-
-
-### Exercise 1
-
-Various different numbers are used for each data type. For integer and long, negative and positive values with long or short digits were both tested. Furthermore, for 32 bit float, values with over 7 decimal points were also tested and showed that the code simply neglects any digits exceeding the limits, eventually not having any effects on the measured values.
-
-### Exercise 2
-
-
-### Exercise 3
+* **Module 3: Reading data from accelerometer** <br>
 
 
