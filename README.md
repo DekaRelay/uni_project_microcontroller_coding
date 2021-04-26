@@ -78,20 +78,6 @@ The downward direction of the accelerometer was then calculated as the closest a
 
 
 
-    * Function 1: Initialise the ADC <br>
-This function turns on ADC, setting the number of conversions, the resolutions, and the prescaler for the conversion frequency. Here we chose three conversions as the accelerometer would input three pieces of information and set the resolution to 8-bits which was decided was satisfactory for this application.
-
-    * Function 2: Initialise the serial <br>
-This function goes through the serial registers and sets them to the appropriate value. Setting the baud rate to 9600, selecting the number of relevant bits and enables the serial transmit and recieve and enables the reciever interrupt.
-
-    * Function 3: Read accelerometer <br>
-This function uses polling to read from the ATD ports to retrieve the inputs from the accelerometer.
-
-    * Function 4: Calculate acceleration <br>
-Using a formula retrieved from the KXPS5-3157 the acceleration for each axis is calculated using the data inputed by the accelerometer.
-
-
-
 ## Instructions
 
 ### Exercise 1
