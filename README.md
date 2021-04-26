@@ -43,14 +43,13 @@ Exercise 1 was divided into 3 major modules including timer, measurment and disp
 
 
 *  **Exercise 2** <br>
-
 This module includes 5 functions that when combined complete the task
 
     * Function 1: initialise struct <br>
 This function takes creates the serial struct and assigns relevant values to it.
 
     * Function 2: initialise serial <br>
-This function will go through all the serial registers and set them to the appropriate value. This includes setting the baud rate, selects the number of relevant bits, enables the serial transmit and recieve and enables the receiver interrupt. 
+This function goes through all the serial registers and set them to the appropriate value. This includes setting the baud rate to 9600, selecting the number of relevant bits, enabling the serial transmit and recieve and enabling the receiver interrupt. 
 
     * Function 3: interupt serial 0 <br>
 This function is triggered when the SCI0 interrupt occurs. It takes the data inputted from the serial port and stores it in a buffer to be outputted.
@@ -61,10 +60,18 @@ This function operates the same as function three but is triggered when the SCI1
     * Function 5: send serial <br>
 This function takes the data stored in the buffer and trasmits it back to the serial port it came from.
 
-### Exercise 3
+*  **Exercise 3** <br>
+This module includes 8 functions that when combined complete the task
+
+    * Function 1: Initialise the ADC <br>
+This function turns on ADC, setting the number of conversions, the resolutions, and the prescaler for the conversion frequency. Here we chose three conversions as the accelerometer would input three pieces of information and set the resolution to 8-bits which was decided was satisfactory for this application.
+
+    * Function 2: Initialise the serial <br>
+This function goes through the serial registers and sets them to the appropriate value. Setting the baud rate to 9600, selecting the number of relevant bits and enables the serial transmit and recieve and enables the reciever interrupt.
+
+    * Function 3: Read accelerometer <br>
 
 
-#### Discussion and Remarks
 
 
 
