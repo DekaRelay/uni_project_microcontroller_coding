@@ -1,21 +1,37 @@
 # Group_7
-# Assignment 2 - C Coding for Microcontrollers
+# Lab 2 - C Coding for Microcontrollers
 
-## Group Details
+The aim of this lab is to demonstrate how the microcontroller handles memory using pointers and iterators, demonstrate the use of interrupts, demonstrate the use of timers and to perform an integration of software modules.
+
+## Group Members
+
 - Henry Kim (SID 470008942)
-- William McBean (SID )
+- William McBean (SID 490404595)
 - Rishabh Leelchand (SID )
 - Wei Ming Chen (SID )
 
-## Group Contributions
-Exercise 1: Henry
+## Detail about the project
 
-Exercise 2: 
+There are 4 Group members in this project, two in person and two online members. To ensure the ease of completion this project was broken into modules and modules were distributed to each group member. The role of each group member is shown below:
 
-Exercise 3: 
+- Rishabh Leelchand:
+- Henry Kim:
+- Wei Ming:
+- William McBean: The primary role of William in this lab was to see the completion of Exercise 2 and 3. To do this he worked collaboratively with Wei Ming. He also contributed to the collaboration of the exercise modules and the documentation. 
 
+Each group member is responsible for the collaboration and completion of the project. This means that each group member is held accountable to communicate with other members efficiently and complete their assigned tasks on time.
 
 ## High Level Overview
+
+The code in this project is divided into 3 main modules:
+- Module 1: Benchmarking the performance of arithmetic functions
+Module 1 calculates the time taken for different math operations within the microcontroller and outputs this data to the serial port in tabular form
+- Module 2: Serial with interrupts
+Module 2 recieves input from both serial port 0 and 1 via interrupts and outputs this data back towards the same serial port.
+- Module 3: Reading data from accelerometer
+Module 3 reads analog input from an external accelerometer and transforms it into a live feed of the acceleration values. Moreover, this module takes these values and trasmits a live feed to the serial port displaying the current acceleration along the axes and the axis pointing in the downward direction.
+
+Each of these three main modules were broken into sets of functions to perform the task specifically.
 
 ### Exercise 1
 
