@@ -40,14 +40,26 @@ Exercise 1 was divided into 3 major modules including timer, measurment and disp
 - Measurment: In the measurement module, the timer enabled in timer module is used to achieve the start and end of each arithmetic calculations to derive the durations. The module has comparably repetitive code since the main focus of the module was to measure the pure time without any other unexpected factors varying the duration. Furthermore, each measurement was also subtracted with an 'empty' measurement since there is likely to be delays in actual recording the start and end time as well.
 - Displaying: The displaying module arranges the measured values into a table format and sends to the serial to display.
 
-#### Discussion and Remarks
 
 
-### Exercise 2
+*  **Exercise 2** <br>
 
+This module includes 5 functions that when combined complete the task
 
-#### Discussion and Remarks
+    * Function 1: initialise struct <br>
+This function takes creates the serial struct and assigns relevant values to it.
 
+    * Function 2: initialise serial <br>
+This function will go through all the serial registers and set them to the appropriate value. This includes setting the baud rate, selects the number of relevant bits, enables the serial transmit and recieve and enables the receiver interrupt. 
+
+    * Function 3: interupt serial 0 <br>
+This function is triggered when the SCI0 interrupt occurs. It takes the data inputted from the serial port and stores it in a buffer to be outputted.
+
+    * Function 4: interupt serial 1 <br>
+This function operates the same as function three but is triggered when the SCI1 interrupt occurs.
+
+    * Function 5: send serial <br>
+This function takes the data stored in the buffer and trasmits it back to the serial port it came from.
 
 ### Exercise 3
 
