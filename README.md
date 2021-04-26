@@ -24,7 +24,7 @@ Each group member is responsible for the collaboration and completion of the pro
 ## High Level Overview
 
 The code in this project is divided into 3 main modules:
-- Module 1: Benchmarking the performance of arithmetic functions
+* **Module 1:** <br> Benchmarking the performance of arithmetic functions
 Module 1 calculates the time taken for different math operations within the microcontroller and outputs this data to the serial port in tabular form
 - Module 2: Serial with interrupts
 Module 2 recieves input from both serial port 0 and 1 via interrupts and outputs this data back towards the same serial port.
