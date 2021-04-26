@@ -45,7 +45,6 @@ In the measurement module, the timer enabled in timer module is used to achieve 
     * Displaying <br>
 The displaying module arranges the measured values into a table format and sends to the serial to display.
 
-
 *  **Exercise 2** <br>
 Exercise 2 was broken into 4 major modules including the serial initialisation, SCIO interrupt, SCI1 interrupt and send serial modules.
     
