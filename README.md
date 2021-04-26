@@ -59,7 +59,7 @@ This function is triggered when the SCI0 interrupt occurs. It takes the data inp
 This function operates the same as function three but is triggered when the SCI1 interrupt occurs.
 
     * Function 5: send serial <br>
-This function takes the data stores in the buffer and trasmits it back to the serial port it came from.
+This function takes the data stored in the buffer and trasmits it back to the serial port it came from.
 
 ### Exercise 3
 
