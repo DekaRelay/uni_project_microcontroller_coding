@@ -119,11 +119,10 @@ The downward direction of the accelerometer was then calculated as the closest a
 ## Details about testing procedures
 
 * **Module 1: Benchmarking the performance of arithmetic functions** <br>
-
-input range:
-constraints/limitations: - maybe talk about inputs to the table
-outputs:
-testing procedure:
+* input range:
+* constraints/limitations: - maybe talk about inputs to the table
+* outputs:
+* testing procedure:
 
 
 Tested out various different type of values for all integer, long, 32 bit float and 64 bit float.
