@@ -43,7 +43,7 @@ void main(void) {
   for(i = 0 ; i<9 ; i++){
     
     send_serial(ascii_array[i]);
-    send_char_serial(13);	
+    //send_char_serial(13);	
   
   }
   // Send measured floats to serial

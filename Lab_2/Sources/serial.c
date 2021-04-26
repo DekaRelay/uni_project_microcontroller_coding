@@ -51,7 +51,7 @@ void send_serial(char *string) {
  
   int i;
   
-  for (i = 0; i <= 80; i++){
+  for (i = 0; i <= 82; i++){
     
     //if (SCI1SR1 & TDRE_BIT) {
     while(!(SCI1SR1 & TDRE_BIT));  
