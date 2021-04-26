@@ -33,7 +33,7 @@ Module 3 reads analog input from an external accelerometer and transforms it int
 
 Each of these three main modules were broken into sets of functions to perform the task specifically.
 
-#### - Exercise 1
+*  **Exercise 1** <br>
 
 Exercise 1 was divided into 3 major modules including timer, measurment and displaying modules.
 - Timer: In order to measure the alrithmetic calculations, the timer implemented in HCS12 board was used. The timer with the lowest prescaler of 1 is used with continuous interrupt whenever the timer overflows to check the total time. 
