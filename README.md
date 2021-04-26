@@ -22,7 +22,7 @@ Exercise 3:
 Exercise 1 was divided into 3 major modules including timer, measurment and displaying modules.
 - Timer: In order to measure the alrithmetic calculations, the timer implemented in HCS12 board was used. The timer with the lowest prescaler of 1 is used with continuous interrupt whenever the timer overflows to check the total time. 
 - Measurment: In the measurement module, the timer enabled in timer module is used to achieve the start and end of each arithmetic calculations to derive the durations. The module has comparably repetitive code since the main focus of the module was to measure the pure time without any other unexpected factors varying the duration. Furthermore, each measurement was also subtracted with an 'empty' measurement since there is likely to be delays in actual recording the start and end time as well.
-- Displaying: 
+- Displaying: The displaying module arranges the measured values into a table format and sends to the serial to display.
 
 #### Discussion and Remarks
 
