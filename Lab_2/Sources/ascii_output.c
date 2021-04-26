@@ -109,8 +109,9 @@ void ascii_table(float time[4][6]){
         ascii_array[k][line_count] = '|'; //add | to line
         line_count++;
       }
-      ascii_array[k][line_count] = '\n';
-      line_count++;
+      ascii_array[k][78] = '\n';
+      //ascii_array[k][line_count] = '\n';
+      //line_count++;
       //ascii_array[k][line_count] = '\0';  //add null char to end of string
       k = k +2;
     }
