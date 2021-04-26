@@ -12,12 +12,16 @@ int dVal;
 void float_to_str(float n) {
  
  
- buffer_index = 0;  // Reset buffer_index
+ for(buffer_index = 0; buffer_index < BUFFER_SIZE; buffer_index++) { // Reset buffer_index
+    buffer[buffer_index] = 0;
+ }
+
+ buffer_index = 0;
  
- n += 0.005;
+ n += 0.005;    // Round to 2 decimal places
  
  dVal = (int)n;
- dec = (int)(n * 100) % 100;
+ dec = (n - dVal)*100;
  
  buffer[buffer_index++] = (dec % 10) + '0';
  buffer[buffer_index++] = (dec / 10) + '0';

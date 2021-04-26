@@ -51,7 +51,7 @@ Section Name                    Size  Type     From       To       Segment
 .rodata                            8     R     0xC015     0xC01C   ROM_C000
 NON_BANKED                      1428     R     0xC01D     0xC5B0   ROM_C000
 .copy                             85     R     0xC5B1     0xC605   ROM_C000
-.text                           2817     R   0x308000   0x308B00   PAGE_30
+.text                           2850     R   0x308000   0x308B21   PAGE_30
 .stack                           256   R/W     0x1000     0x10FF   RAM
 .data                             81   R/W     0x1100     0x1150   RAM
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
@@ -401,7 +401,7 @@ NON_BANKED                      1428     R     0xC01D     0xC5B0   ROM_C000
 .vectSeg342_vect                   2     R     0xFFFE     0xFFFF   .vectSeg342
 
 Summary of section sizes per section type:
-READ_ONLY (R):        1187 (dec:     4487)
+READ_ONLY (R):        11A8 (dec:     4520)
 READ_WRITE (R/W):      4C6 (dec:     1222)
 NO_INIT (N/I):         190 (dec:      400)
 
@@ -764,8 +764,8 @@ MODULE:                 -- main.c.o --
      main                                    308000      AE     174       2   .text       
 - VARIABLES:
      overflow                                  1151       2       2       9   .bss        
-     buffer                                    1153      64     100       5   .common     
-     buffer_index                              11B7       2       2       4   .common     
+     buffer                                    1153      64     100       6   .common     
+     buffer_index                              11B7       2       2       6   .common     
      ascii_array                               11B9     2FD     765      15   .common     
 MODULE:                 -- Start12.c.o --
 - PROCEDURES:
@@ -797,7 +797,7 @@ MODULE:                 -- FADD.C.o (ansib.lib) --
 - PROCEDURES:
      F_ADDKL                                   C026      67     103       1   NON_BANKED  
      _FADD                                     C08D      15      21      18   NON_BANKED  
-     _FSUB                                     C0A2      13      19       1   NON_BANKED  
+     _FSUB                                     C0A2      13      19       2   NON_BANKED  
      _FINC                                     C0B5       F      15       1   NON_BANKED  
      _FNEG                                     C0C4       B      11       2   NON_BANKED  
 - VARIABLES:
@@ -819,7 +819,7 @@ MODULE:                 -- FCONV.C.o (ansib.lib) --
 - PROCEDURES:
      F_TOLONGK                                 C1BD      33      51       1   NON_BANKED  
      F_FRLONGK                                 C1F0      1F      31       1   NON_BANKED  
-     _FSFLOAT                                  C20F      12      18       4   NON_BANKED  
+     _FSFLOAT                                  C20F      12      18       5   NON_BANKED  
      _FSTRUNC                                  C221      11      17       5   NON_BANKED  
      _FUTRUNC                                  C232       3       3       1   NON_BANKED  
 - VARIABLES:
@@ -850,7 +850,7 @@ MODULE:                 -- rtshc12.c.o (ansib.lib) --
      _lDivMod                                  C46D      BE     190       2   NON_BANKED  
      _NEG_P                                    C52B       F      15       5   NON_BANKED  
      _LDIVS                                    C53A      35      53       1   NON_BANKED  
-     _ILSEXT                                   C56F       7       7       8   NON_BANKED  
+     _ILSEXT                                   C56F       7       7       9   NON_BANKED  
      _CASE_CHECKED_BYTE                        C576      14      20       6   NON_BANKED  
 - VARIABLES:
      errno                                     14B6       2       2       2   .common     
@@ -878,17 +878,17 @@ MODULE:                 -- timers.c.o --
 - VARIABLES:
 MODULE:                 -- serial.c.o --
 - PROCEDURES:
-     float_to_str                            30884A      8B     139       2   .text       
-     Init_serial                             3088D5       F      15       2   .text       
-     send_serial                             3088E4      24      36       2   .text       
-     send_char_serial                        308908       C      12       2   .text       
+     float_to_str                            30884A      A5     165       2   .text       
+     Init_serial                             3088EF       F      15       2   .text       
+     send_serial                             3088FE      24      36       2   .text       
+     send_char_serial                        308922       C      12       2   .text       
 - VARIABLES:
      TDRE_BIT                                  1100       2       2       2   .data       
      dec                                       14B8       2       2       2   .common     
      dVal                                      14BA       2       2       5   .common     
 MODULE:                 -- ascii_output.c.o --
 - PROCEDURES:
-     ascii_table                             308914     1ED     493      18   .text       
+     ascii_table                             30892E     1F4     500      19   .text       
 - VARIABLES:
      top_label                                 1102      4F      79       1   .data       
      i                                         14BC       2       2      10   .common     
@@ -917,8 +917,8 @@ MODULE STATISTIC
   isr_vectors.c.o                              0      2    126
   measure.c.o                                  0    890      0
   timers.c.o                                   0     21      0
-  serial.c.o                                   6    202      0
-  ascii_output.c.o                            89    493      0
+  serial.c.o                                   6    228      0
+  ascii_output.c.o                            89    500      0
   other                                      256     12     85
 
 *********************************************************************************************
@@ -1977,8 +1977,8 @@ OBJECT LIST SORTED BY ADDRESS
      TDRE_BIT                                  1100       2       2       2   .data       
      top_label                                 1102      4F      79       1   .data       
      overflow                                  1151       2       2       9   .bss        
-     buffer                                    1153      64     100       5   .common     
-     buffer_index                              11B7       2       2       4   .common     
+     buffer                                    1153      64     100       6   .common     
+     buffer_index                              11B7       2       2       6   .common     
      ascii_array                               11B9     2FD     765      15   .common     
      errno                                     14B6       2       2       2   .common     
      dec                                       14B8       2       2       2   .common     
@@ -1996,7 +1996,7 @@ OBJECT LIST SORTED BY ADDRESS
      ldexp                                     C023       3       3       3   NON_BANKED  
      F_ADDKL                                   C026      67     103       1   NON_BANKED  
      _FADD                                     C08D      15      21      18   NON_BANKED  
-     _FSUB                                     C0A2      13      19       1   NON_BANKED  
+     _FSUB                                     C0A2      13      19       2   NON_BANKED  
      _FINC                                     C0B5       F      15       1   NON_BANKED  
      _FNEG                                     C0C4       B      11       2   NON_BANKED  
      F_MODF                                    C0CF      38      56       1   NON_BANKED  
@@ -2009,7 +2009,7 @@ OBJECT LIST SORTED BY ADDRESS
      _FCMP                                     C197      26      38       3   NON_BANKED  
      F_TOLONGK                                 C1BD      33      51       1   NON_BANKED  
      F_FRLONGK                                 C1F0      1F      31       1   NON_BANKED  
-     _FSFLOAT                                  C20F      12      18       4   NON_BANKED  
+     _FSFLOAT                                  C20F      12      18       5   NON_BANKED  
      _FSTRUNC                                  C221      11      17       5   NON_BANKED  
      _FUTRUNC                                  C232       3       3       1   NON_BANKED  
      F_DIVKL                                   C235      8E     142       1   NON_BANKED  
@@ -2031,7 +2031,7 @@ OBJECT LIST SORTED BY ADDRESS
      _lDivMod                                  C46D      BE     190       2   NON_BANKED  
      _NEG_P                                    C52B       F      15       5   NON_BANKED  
      _LDIVS                                    C53A      35      53       1   NON_BANKED  
-     _ILSEXT                                   C56F       7       7       8   NON_BANKED  
+     _ILSEXT                                   C56F       7       7       9   NON_BANKED  
      _CASE_CHECKED_BYTE                        C576      14      20       6   NON_BANKED  
      L_NEGK                                    C58A       7       7       2   NON_BANKED  
      L_PSHK                                    C591       8       8       1   NON_BANKED  
@@ -2052,11 +2052,11 @@ OBJECT LIST SORTED BY ADDRESS
      measure_long                            3085C4     14C     332      14   .text       
      measure_32f                             308710     131     305      17   .text       
      Init_Timer                              308841       9       9       2   .text       
-     float_to_str                            30884A      8B     139       2   .text       
-     Init_serial                             3088D5       F      15       2   .text       
-     send_serial                             3088E4      24      36       2   .text       
-     send_char_serial                        308908       C      12       2   .text       
-     ascii_table                             308914     1ED     493      18   .text       
+     float_to_str                            30884A      A5     165       2   .text       
+     Init_serial                             3088EF       F      15       2   .text       
+     send_serial                             3088FE      24      36       2   .text       
+     send_char_serial                        308922       C      12       2   .text       
+     ascii_table                             30892E     1F4     500      19   .text       
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
@@ -2158,13 +2158,13 @@ measure_long              USES measure_long _CASE_CHECKED_BYTE _LMUL _LDIVS
 measure_32f               USES measure_32f _TCNT _CASE_CHECKED_BYTE _FADD 
                                 _FMUL _FDIV sqrt sin cos overflow _ILSEXT 
 Init_Timer                USES _TSCR1 _TSCR2 _TFLG2 
-float_to_str              USES _FADD _FSTRUNC dVal _FMUL dec buffer 
-                                buffer_index 
+float_to_str              USES buffer _FADD _FSTRUNC dVal _ILSEXT _FSFLOAT 
+                                _FSUB _FMUL dec buffer_index 
 Init_serial               USES _SCI1BD _SCI1CR1 _SCI1CR2 
 send_serial               USES _SCI1SR1 TDRE_BIT _SCI1DRL 
 send_char_serial          USES _SCI1SR1 TDRE_BIT _SCI1DRL 
 ascii_table               USES i line_count j ascii_table k top_label 
-                                ascii_array float_to_str char_count buffer buffer_index 
+                                ascii_array float_to_str char_count buffer_index buffer 
 
 *********************************************************************************************
 DEPENDENCY TREE
@@ -2407,6 +2407,12 @@ DEPENDENCY TREE
  |  |     |  
  |  |     +- _FSTRUNC             (see above)
  |  |     |  
+ |  |     +- _ILSEXT              (see above)
+ |  |     |  
+ |  |     +- _FSFLOAT             (see above)
+ |  |     |  
+ |  |     +- _FSUB                (see above)
+ |  |     |  
  |  |     +- _FMUL                (see above)
  |  |        
  |  +- send_serial         
@@ -2432,5 +2438,5 @@ STATISTIC SECTION
 ExeFile:
 --------
 Number of blocks to be downloaded: 6
-Total size of all blocks to be downloaded: 4487
+Total size of all blocks to be downloaded: 4520
 

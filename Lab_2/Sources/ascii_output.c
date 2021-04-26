@@ -93,10 +93,11 @@ void ascii_table(float time[4][6]){
         float_to_str(time[i][j]);       //convert num to string
         char_count = 0;
         
-        while(char_count <= buffer_index){     //add string to the ascii
-          ascii_array[k][line_count] = buffer[char_count];
+        while(buffer_index >= 0){     //add string to the ascii
+          ascii_array[k][line_count] = buffer[buffer_index];
           line_count++;
-          char_count++; 
+          char_count++;
+          buffer_index--; 
         }
         
         while(char_count <= 10){
@@ -110,7 +111,7 @@ void ascii_table(float time[4][6]){
       }
       ascii_array[k][line_count] = '\n';
       line_count++;
-      ascii_array[k][line_count] = '\0';  //add null char to end of string
+      //ascii_array[k][line_count] = '\0';  //add null char to end of string
       k = k +2;
     }
     
