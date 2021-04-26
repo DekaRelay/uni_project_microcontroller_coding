@@ -70,7 +70,13 @@ The serial port was initialised using the appropriate parameters to achieve a no
 Reading from the accelerometer was achieved by reading from the ATD1 registers. This provided a digital input of the accelerometer data which could later be converted into a readable value.
 
     * Acceleration conversion <br>
-The di
+The digital values retrieved from the accelerometer were converted into actual acceleration values using a formula retrieved from the KXPS5-3157 data sheet. These values are then outputed in real time to the serial port
+
+    * Direction calculation <br>
+The downward direction of the accelerometer was then calculated as the closest axis facing downward and outputted to the serial port in real time.
+
+
+
 
     * Function 1: Initialise the ADC <br>
 This function turns on ADC, setting the number of conversions, the resolutions, and the prescaler for the conversion frequency. Here we chose three conversions as the accelerometer would input three pieces of information and set the resolution to 8-bits which was decided was satisfactory for this application.
