@@ -7,7 +7,7 @@ The aim of this lab is to demonstrate how the microcontroller handles memory usi
 
 - Henry Kim (SID 470008942)
 - William McBean (SID 490404595)
-- Rishabh Leelchand (SID )
+- Rishabh Leelchand (SID 490296808)
 - Wei Ming Chen (SID 470351332)
 
 ## Detail about the project
