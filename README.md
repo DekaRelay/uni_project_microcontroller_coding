@@ -15,7 +15,7 @@ The aim of this lab is to demonstrate how the microcontroller handles memory usi
 There are 4 Group members in this project, two in person and two online members. To ensure the ease of completion this project was broken into modules and modules were distributed to each group member. The role of each group member is shown below:
 
 - Rishabh Leelchand:
-- Henry Kim:
+- Henry Kim: The primary role was to handle the timer and calculations of Exercise 1. Also merged the entired lab into one project file by collaborating with William.
 - Wei Ming:
 - William McBean: The primary role of William in this lab was to see the completion of Exercise 2 and 3. To do this he worked collaboratively with Wei Ming. He also contributed to the collaboration of the exercise modules and the documentation. 
 
@@ -119,18 +119,20 @@ The downward direction of the accelerometer was then calculated as the closest a
 ## Details about testing procedures
 
 * **Module 1: Benchmarking the performance of arithmetic functions** <br>
-   * input range:
-   * constraints/limitations: - maybe talk about inputs to the table
-   * outputs:
+   * input range: No inputs during testings, but values, which in range of their data types, can be used for measurement by modifying variable values directly.
+   * constraints/limitations: Table format is designed to only have 5 rows and 7 columns with 2 decimal places.
+   * outputs: The measured duration of each calculation(microseconds) displayed in table format on serial terminal.
    * testing procedure:
+      1. Ensure exercise 2 is selected on the program by setting ex_num to 1.
+      2. Open the debugger and connect to the dragon board and external putty port.
+      3. Open the terminal component, set it to recieve and transmit from SCI1 and run the program.
+      4. Compare the displayed data with expected values.
+      5. Repeat steps 2, 3 and 4 changing values for variables used in calculation. (Tested values listed below)
 
-
-Tested out various different type of values for all integer, long, 32 bit float and 64 bit float.
-
-Integer: Different length of numbers used (ie. b = 10, c = 5 / b = 255, c = 125 / b = 500, c = 17)
-Long: Relatively longer digits were used (ie. b = 1000000, c = 800000 / b = 1234567, c = 876543)
-32-bit float: Both short and long digits with decimal places were tested. Discovered that decimal places over 7 digits simply gets removed, having no impact on the measured time.
-64-bit float: Relatively longer digits with decimal places were tested.
+         * Integer: Different length of numbers used (ie. b = 10, c = 5 / b = 255, c = 125 / b = 500, c = 17)
+         * Long: Relatively longer digits were used (ie. b = 1000000, c = 800000 / b = 1234567, c = 876543)
+         * 32-bit float: Both short and long digits with decimal places were tested. Discovered that decimal places over 7 digits simply gets removed, having no impact on the measured time.
+         * 64-bit float: Relatively longer digits with decimal places were tested.
 Note: Every first measurement time showed unexpected larger value, therefore the initial measurement is duplicated and the second value is used!
 
 * **Module 2: Serial with interrupts** <br>
@@ -142,7 +144,7 @@ Note: Every first measurement time showed unexpected larger value, therefore the
       2. Open the debugger in simulation mode, change derivative.h and add a b to the pragma line.
       3. Open the terminal component, set it to recieve and transmit from SCI0 and run the program.
       4. Type into the terminal and check that the inputted characters appear in the terminal.
-      5. repeat steps 3 and 4 changing the recieve and transmit to SCI1.
+      5. Repeat steps 3 and 4 changing the recieve and transmit to SCI1.
 
 * **Module 3: Reading data from accelerometer** <br>
    * input range: Input taken from ATD1 pins on the dragon board retrieved from the attached accelerometer
@@ -154,5 +156,5 @@ Note: Every first measurement time showed unexpected larger value, therefore the
       3. Run the program.
       4. Hold the accelerometer down on the positive direction of the x-axis.
       5. Check that the putty output shows close to 9.8 m/s^2 for the x component and shows that the positive sense of the x-axis is pointing down.
-      6. repeat steps 4-5 for each of the axis directions.
+      6. Repeat steps 4-5 for each of the axis directions.
 
