@@ -119,10 +119,10 @@ The downward direction of the accelerometer was then calculated as the closest a
 ## Details about testing procedures
 
 * **Module 1: Benchmarking the performance of arithmetic functions** <br>
-* input range:
-* constraints/limitations: - maybe talk about inputs to the table
-* outputs:
-* testing procedure:
+   * input range:
+   * constraints/limitations: - maybe talk about inputs to the table
+   * outputs:
+   * testing procedure:
 
 
 Tested out various different type of values for all integer, long, 32 bit float and 64 bit float.
@@ -134,8 +134,25 @@ Long: Relatively longer digits were used (ie. b = 1000000, c = 800000 / b = 1234
 Note: Every first measurement time showed unexpected larger value, therefore the initial measurement is duplicated and the second value is used!
 
 * **Module 2: Serial with interrupts** <br>
-
+   * input range: Input taken from terminal in putty, inputs can be any character.
+   * constraints/limitations: Need to define a buffer size large enough to store the inputted message.
+   * outputs: Outputs the character defined in memory to the same serial port it was recieved from.
+   * testing procedure: 
+      1. Ensure exercise 2 is selected on the program by setting ex_num to 2
+      2. Open the debugger in simulation mode
+      3. Open the terminal component, set it to recieve and transmit from SCI0 and run the program
+      4. Type into the terminal and check that the inputted characters appear in the terminal
+      5. repeat steps 3 and 4 changing the recieve and transmit to SCI1.
 
 * **Module 3: Reading data from accelerometer** <br>
-
+   * input range: Input taken from ATD1 pins on the dragon board retrieved from the attached accelerometer
+   * constraints/limitations: Accelerometer only reads between -29.43 and 29.43 m/s^2 so cannot be used for high acceleration applications
+   * outputs: Outputs a live feed of the acceleration and downward direction of the accelerometer to putty.
+   * testing procedure:
+      1. Ensure exercise 3 is selected on the program by setting ex_num to 3.
+      2. Open the debugger and connect to the dragon board and external putty port.
+      3. Run the program.
+      4. Hold the accelerometer down on the positive direction of the x-axis.
+      5. Check that the putty output shows close to 9.8 m/s^2 for the x component and shows that the positive sense of the x-axis is pointing down.
+      6. repeat steps 4-5 for each of the axis directions.
 
