@@ -14,9 +14,9 @@ The aim of this lab is to demonstrate how the microcontroller handles memory usi
 
 There are 4 Group members in this project, two in person and two online members. To ensure the ease of completion this project was broken into modules and modules were distributed to each group member. The role of each group member is shown below:
 
-- Rishabh Leelchand:
+- Rishabh Leelchand: Designed the module to convert the float data of Exercise 1 to table format, collaborating with Henry.
 - Henry Kim: The primary role was to handle the timer and calculations of Exercise 1. Also merged the entired lab into one project file by collaborating with William.
-- Wei Ming:
+- Wei Ming: Worked on Exercise 3 mainly on accelerometer collaborating with William.
 - William McBean: The primary role of William in this lab was to see the completion of Exercise 2 and 3. To do this he worked collaboratively with Wei Ming. He also contributed to the collaboration of the exercise modules and the documentation. 
 
 Each group member is responsible for the collaboration and completion of the project. This means that each group member is held accountable to communicate with other members efficiently and complete their assigned tasks on time.
