@@ -138,10 +138,10 @@ Note: Every first measurement time showed unexpected larger value, therefore the
    * constraints/limitations: Need to define a buffer size large enough to store the inputted message.
    * outputs: Outputs the character defined in memory to the same serial port it was recieved from.
    * testing procedure: 
-      1. Ensure exercise 2 is selected on the program by setting ex_num to 2
-      2. Open the debugger in simulation mode
-      3. Open the terminal component, set it to recieve and transmit from SCI0 and run the program
-      4. Type into the terminal and check that the inputted characters appear in the terminal
+      1. Ensure exercise 2 is selected on the program by setting ex_num to 2.
+      2. Open the debugger in simulation mode, change derivative.h and add a b to the pragma line.
+      3. Open the terminal component, set it to recieve and transmit from SCI0 and run the program.
+      4. Type into the terminal and check that the inputted characters appear in the terminal.
       5. repeat steps 3 and 4 changing the recieve and transmit to SCI1.
 
 * **Module 3: Reading data from accelerometer** <br>
